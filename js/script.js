@@ -91,16 +91,13 @@ document.getElementById('ris-3').innerHTML += arrayFusion(arrayNumeri,arrayLette
 
 
 //! ------Snack numero 4 - inizio------
+//TODO Scrivi una funzione che prenda una stringa e la trasformi con l'iniziale maiuscola e tutto il resto in minuscolo.
 
-
-
-
-
-
-
+// Chiedo all'utente di inserire una parola
+var parolaCap = prompt('Inserire una parola');
 
 //* stampo il risultato nell'html
-// document.getElementById('ris-4').innerHTML =
+document.getElementById('ris-4').innerHTML = capitalize(parolaCap);
 //! ------Snack numero 4 - fine------
 
 
@@ -153,4 +150,8 @@ function arrayFusion(array1,array2){
         arrayOut.push(array1[i],array2[i]);
     }
     return arrayOut;
+}
+
+function capitalize(word){
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 }
