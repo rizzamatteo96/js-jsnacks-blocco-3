@@ -35,8 +35,16 @@ document.getElementById('ris-1').innerHTML += estrattoreArray(arrayBase,posMin,p
 
 
 
+//! ------Snack numero 2 - inizio------
+//TODO Dare la possibilità di inserire due parole. Verificare tramite una funzione che le due parole abbiano la stessa lunghezza. Se hanno la stessa lunghezza, stamparle entrambe altrimenti stampare la più lunga delle due.
 
+// Chiedo all'utente di inserire due parole
+var parola1 = prompt('Inserisci la prima parola');
+var parola2 = prompt('Inserisci la seconda parola');
 
+//* stampo il risultato nell'html
+document.getElementById('ris-2').innerHTML = wordLength(parola1,parola2);
+//! ------Snack numero 2 - fine------
 
 
 
@@ -86,4 +94,16 @@ function estrattoreArray(array,min,max){
 
 function chkRange(min,max,val){
     return val >= min && val <= max && !isNaN(val);
+}
+
+function wordLength(word1,word2){
+    var msg = 'Le parole sono lunghe uguali e sono: ' + word1 + ' + ' + word2;
+    if(word1.length > word2.length){
+        msg = 'La prima parola è più lunga. La parola è: ' + word1;
+    }
+    else if(word2.length > word1.length){
+        msg = 'La seconda parola è più lunga. La parola è: ' + word2;
+    }
+
+    return msg;
 }
