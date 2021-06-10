@@ -16,13 +16,13 @@ console.log(arrayBase);
 var posMin = parseInt(prompt('Estrattore array: Inserisci un valore da 1 a 100'));
 while(!chkRange(1,100,posMin)){
     alert('Attenzione! Il dato inserito non è coerente');
-    var posMin = parseInt(prompt('Estrattore array: Inserisci un NUMERO da 1 a 100'));
+    posMin = parseInt(prompt('Estrattore array: Inserisci un NUMERO da 1 a 100'));
 }
 //* creazione del massimo
 var posMax = parseInt(prompt('Estrattore array: Inserisci un valore da 1 a 100'));
 while(!chkRange(1,100,posMax)){
     alert('Attenzione! Il dato inserito non è coerente');
-    var posMax = parseInt(prompt('Estrattore array: Inserisci un NUMERO da 1 a 100'));
+    posMax = parseInt(prompt('Estrattore array: Inserisci un NUMERO da 1 a 100'));
 }
 
 // trasformo i valori inseriti dall'utente per farli funzionare nel for
@@ -47,6 +47,50 @@ document.getElementById('ris-2').innerHTML = wordLength(parola1,parola2);
 //! ------Snack numero 2 - fine------
 
 
+//! ------Snack numero 3 - inizio------
+//TODO Scrivi una funzione che fonda due array (con lo stesso numero di elementi) prendendo alternativamente gli elementi da uno e dall’altro Es. [a,b,c], [1,2,3] → [a,1,b,2,c,3].
+
+// Chiedo all'utente la dimensione dei due array impostando come massimo 10
+var arrayL = parseInt(prompt('Inserisci un numero da 1 a 10'));
+
+while(!chkRange(1,10,arrayL)){
+    alert('Attenzione! Il dato inserito non è coerente');
+    arrayL = parseInt(prompt('Inserisci un numero da 1 a 10'));
+}
+
+// Genero un array di arrayL elementi di numeri random
+arrayNumeri = [];
+while (arrayNumeri.length < arrayL){
+    var numero = rndNum(1,100);
+    if(!arrayNumeri.includes(numero)){
+        arrayNumeri.push(numero);
+    }
+}
+console.log(arrayNumeri);
+
+// Genero un array di arrayL elementi di lettere minuscole random
+arrayLettere = [];
+while (arrayLettere.length < arrayL){
+    //* creo un numero random da 97=codice ascii di 'a' a 122=codice ascii di 'z' 
+    var lettera = rndNum(97,122);
+    if(!arrayLettere.includes(lettera)){
+        arrayLettere.push(lettera);
+    }
+}
+
+for(var i = 0; i < arrayLettere.length; i++){
+    //* trasformo i codici ascii in lettere
+    arrayLettere[i] = String.fromCharCode(arrayLettere[i]);
+}
+
+console.log(arrayLettere);
+
+//* stampo il risultato nell'html
+document.getElementById('ris-3').innerHTML += arrayFusion(arrayNumeri,arrayLettere);
+//! ------Snack numero 3 - fine------
+
+
+//! ------Snack numero 4 - inizio------
 
 
 
@@ -55,14 +99,9 @@ document.getElementById('ris-2').innerHTML = wordLength(parola1,parola2);
 
 
 
-
-
-
-
-
-
-
-
+//* stampo il risultato nell'html
+// document.getElementById('ris-4').innerHTML =
+//! ------Snack numero 4 - fine------
 
 
 
@@ -106,4 +145,12 @@ function wordLength(word1,word2){
     }
 
     return msg;
+}
+
+function arrayFusion(array1,array2){
+    var arrayOut = [];
+    for(var i = 0; i < array1.length; i++){
+        arrayOut.push(array1[i],array2[i]);
+    }
+    return arrayOut;
 }
